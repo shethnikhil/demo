@@ -1,10 +1,12 @@
 version: '3'
+
 services:
   web:
-    build: .
+    build: ./simple_app
     ports:
       - "5000:5000"
-    depends_on:
+    links:
       - redis
+
   redis:
-    image: "redis:alpine"
+    image: "redis"
