@@ -13,7 +13,5 @@ services:
     volumes:
       - C:/Users/Nikhil/Desktop/coding/practice/containers:/data  # Attach a volume for persistent storage
 
-
-
 volumes:
-  redis_data:  # Named volume for Redis, managed by Docker
+ 
