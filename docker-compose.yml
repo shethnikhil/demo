@@ -1,19 +1,20 @@
+version: '3.8'
+
 services:
   web:
-    build: ./simple_app
+    build: ./simple_app           # Path to your app directory
     ports:
-      - "5000:5000"
+      - "5000:5000"               # Exposing port 5000
     depends_on:
-      - redis
+      - redis                      # Ensuring Redis starts before the web service
 
   redis:
-    image: "redis:latest"
+    image: "redis:latest"         # Using the official Redis image
     ports:
-      - "6379:6379"
+      - "6379:6379"                # Exposing Redis port
     volumes:
-      - C:/Users/Nikhil/Desktop/coding/practice/containers:/data  # Bind mount to host directory
+      - redis_data:/data           # Use named volumes for data persistence
 
-# Named volumes (only needed if you want named volumes)
+# Declare named volumes
 volumes:
-  # If you had named volumes, declare them here
-  # redis_data:  # Uncomment if you are using named volumes instead
+  redis_data:                      # Named volume for Redis persistence
