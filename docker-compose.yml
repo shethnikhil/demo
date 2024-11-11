@@ -1,12 +1,19 @@
-version: '3'
-
 services:
   web:
     build: ./simple_app
     ports:
       - "5000:5000"
-    links:
+    depends_on:
       - redis
-
+      
   redis:
-    image: "redis"
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - C:/Users/Nikhil/Desktop/coding/practice/containers:/data  # Attach a volume for persistent storage
+
+
+
+volumes:
+  redis_data:  # Named volume for Redis, managed by Docker
